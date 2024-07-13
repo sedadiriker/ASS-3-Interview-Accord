@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.App {
+  background: rgb(8, 94, 83);
+  background: linear-gradient(
+    166deg,
+    rgba(8, 94, 83, 1) 6%,
+    rgba(191, 129, 44, 1) 100%
+  );
+  min-height: 100vh;
+}
+header {
+  font-family: "Amatic SC", sans-serif;
+  color: white;
+  font-size: 72px;
+  text-align: center;
+  font-weight: 700;
+}
