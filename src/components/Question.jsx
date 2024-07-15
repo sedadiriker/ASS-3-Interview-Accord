@@ -4,22 +4,26 @@ import { arrowdown, arrowup } from "../helper/icons.js";
 
 const Question = () => {
   const [showAnswer, setShowAnswer] = useState({});
+  const [icon, setIcon] = useState(arrowdown);
 
   const clickArrow = (id) => {
     setShowAnswer((prevAnswer) => ({
       ...prevAnswer,
       [id]: !prevAnswer[id],
     }));
+    setIcon(!icon);
   };
   return (
     <div className="container">
       {questions.map(({ question, id, answer }) => (
         <div className="question" key={id}>
-          {id}. {question}
-          <span onClick={() => clickArrow(id)} className="arrow">
-            {arrowdown}
-          </span>
-          <p>{showAnswer[id] ? answer : ""}</p>
+          <p>
+            {id}. {question}
+            <span onClick={() => clickArrow(id)} className="arrow">
+              {showAnswer[id] ? arrowup : arrowdown}
+            </span>
+          </p>
+          <p className="answer">{showAnswer[id] ? answer : ""}</p>
         </div>
       ))}
     </div>
