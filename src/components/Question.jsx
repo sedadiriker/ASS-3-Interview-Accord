@@ -3,27 +3,25 @@ import questions from "../helper/data.js";
 import { arrowdown, arrowup } from "../helper/icons.js";
 
 const Question = () => {
-  const [show, setShow] = useState(false);
+  const [showAnswer, setShowAnswer] = useState({});
 
-  const clickArrow = () => {
-    setShow(!show);
+  const clickArrow = (id) => {
+    setShowAnswer((prevAnswer) => ({
+      ...prevAnswer,
+      [id]: !prevAnswer[id],
+    }));
   };
   return (
     <div className="container">
-      {questions.map(({ question, id, answer }) =>
-        show ? (
-          <div className="question" key={id}>
-            {id}. {question}
-            <span onClick={clickArrow} className="arrow">{arrowdown}</span>
-            <p>{answer}</p>
-          </div>
-        ) : (
-          <div className="question" key={id}>
-            {id}. {question}
-            <span onClick={clickArrow} className="arrow">{arrowdown}</span>
-          </div>
-        )
-      )}
+      {questions.map(({ question, id, answer }) => (
+        <div className="question" key={id}>
+          {id}. {question}
+          <span onClick={() => clickArrow(id)} className="arrow">
+            {arrowdown}
+          </span>
+          <p>{showAnswer[id] ? answer : ""}</p>
+        </div>
+      ))}
     </div>
   );
 };
